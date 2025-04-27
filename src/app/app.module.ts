@@ -14,11 +14,13 @@ import { DEmoNgZoroAntdModule } from './DemoNgZoroAntdModule';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExpenseComponent } from './components/expense/expense.component';
 import { UpdateExpenseComponent } from './components/update-expense/update-expense.component';
+import { IncomeComponent } from './components/income/income.component';
+import { UpdateIncomeComponent } from './components/update-income/update-income.component';
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [AppComponent, ExpenseComponent, UpdateExpenseComponent],
+  declarations: [AppComponent, ExpenseComponent, UpdateExpenseComponent, IncomeComponent, UpdateIncomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

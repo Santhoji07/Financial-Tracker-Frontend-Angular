@@ -24,10 +24,10 @@
                             formControlName="description"></textarea>
                         </nz-form-control>
                     </nz-form-item>
-                    <nz-form-item nzErrorztip="Please input category!">
+                    <nz-form-item nzErrortip="Please input category!">
                         <nz-form-control>
                             <nz-select nzAllowClear nzPlaceHolder="Select the category" formControlName="category">
-                                <nz-option *ngFor="let category of listOfCategory" [nzLabel]="category">
+                                <nz-option *ngFor="let category of listOfCategory" [nzLabel]="category" [nzValue]="category">
 
                                 </nz-option>
                             </nz-select>
@@ -35,7 +35,7 @@
                     </nz-form-item>
 
                     <button nz-button nzType="primary" nzBlock [disabled]="incomeForm.invalid" class="w-100">
-                        Post Income
+                        Update Income
                     </button>
                 </form>
             </nz-card>

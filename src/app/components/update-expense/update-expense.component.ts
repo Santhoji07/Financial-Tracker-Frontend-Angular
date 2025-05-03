@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { ExpenseService } from '../../expense.service';
+//import { ExpenseService } from '../../expense.service';
+import { ExpenseService } from '../../services/expense/expense.service';
 
 @Component({
   selector: 'app-update-expense',
@@ -23,16 +24,17 @@ export class UpdateExpenseComponent {
     'Other',
   ];
   expenses:any;
-  id:number = this.activatedRoute.snapshot.params['id'];
+  id!:number ;
   loading = false;
   constructor(
     private fb: FormBuilder,
     private expenseService: ExpenseService,
     private message: NzMessageService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute:ActivatedRoute
   ){}
   ngOnInit() {
+    this.id=Number(this.activatedRoute.snapshot.params['id']);
     this.expenseForm = this.fb.group({
       title: [null, Validators.required],
       amount: [null, Validators.required],
@@ -44,18 +46,18 @@ export class UpdateExpenseComponent {
   }
 
   getExpenseById(){
-    this.expenseService.getExpenseById(this.id).subscribe(res=>{
+    this.expenseService.getExpenseById(this.id).subscribe((res:any)=>{
       this.expenseForm.patchValue(res);
-    }, error=>{
+    }, (error:any)=>{
       this.message.error("Something went wrong.",{ nzDuration: 5000 });
     })
   }
   submitForm(){
-    this.expenseService.updateExpense(this.id, this.expenseForm.value).subscribe(res=>{
+    this.expenseService.updateExpense(this.id, this.expenseForm.value).subscribe((res:any)=>{
       this.message.success("Expense updated successfully", { nzDuration: 5000 });
       this.router.navigateByUrl("/expense")
 
-    }, error=>{
+    },( error:any)=>{
       this.message.error("Error while updating expense", { nzDuration: 5000 });
     })
 

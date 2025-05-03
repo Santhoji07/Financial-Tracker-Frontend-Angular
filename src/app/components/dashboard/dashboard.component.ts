@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { StatsService } from '../../services/stats/stats.service';
 import Chart from 'chart.js/auto';
-import { CategoryScale } from 'chart.js/auto';
+import { CategoryScale } from 'chart.js';
 
 Chart.register(CategoryScale);
 
@@ -14,7 +14,6 @@ Chart.register(CategoryScale);
 export class DashboardComponent {
 
   stats:any;
-
   expenses: any;
   incomes: any;
 
@@ -23,8 +22,8 @@ export class DashboardComponent {
     textAlign: 'center'
   };
 
-  @ViewChild('incomeLineChartRef') private incomeLineChartRef: ElementRef;
-  @ViewChild('expenseLineChartRef') private expenseLineChartRef: ElementRef;
+  @ViewChild('incomeLineChartRef') private incomeLineChartRef:ElementRef;
+  @ViewChild('expenseLineChartRef') private expenseLineChartRef:ElementRef;
 
   constructor(private statsService: StatsService){
     this.getStats();
@@ -32,9 +31,9 @@ export class DashboardComponent {
   }
 
   createLineChart() {
-    const incomectx = this.incomeLineChartRef.nativeElement.getContext('2d');
+    const incomeCtx = this.incomeLineChartRef.nativeElement.getContext('2d');
 
-    new Chart(incomectx, {
+    new Chart(incomeCtx, {
       type: 'line',
       data: {
         labels: this.incomes.map(income => income.date),
@@ -55,15 +54,15 @@ export class DashboardComponent {
       }
     });
 
-    const expensectx = this.expenseLineChartRef.nativeElement.getContext('2d');
+    const expenseCtx = this.expenseLineChartRef.nativeElement.getContext('2d');
 
-    new Chart(expensectx, {
+    new Chart(expenseCtx, {
       type: 'line',
       data: {
-        labels: this.expenses.map(income => income.date),
+        labels: this.expenses.map(expense => expense.date),
         datasets: [{
           label: 'Expense',
-          data: this.expenses.map(income => income.amount),
+          data: this.expenses.map(expense => expense.amount),
           borderWidth: 1,
           backgroundColor: 'rgb(255, 0, 0)',
           borderColor: 'rgb(255, 0, 0)',
@@ -77,9 +76,6 @@ export class DashboardComponent {
         }
       }
     });
-
-
-
   }
 
   getStats(){
@@ -100,6 +96,4 @@ export class DashboardComponent {
       }
     })
   }
-
-
 }

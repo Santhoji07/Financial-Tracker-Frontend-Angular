@@ -11,7 +11,8 @@ import { IncomeService } from '../../services/income/income.service';
   styleUrl: './update-income.component.scss'
 })
 export class UpdateIncomeComponent {
-  id:number = this.activatedRoute.snapshot.params['id'];
+ // id:number = this.activatedRoute.snapshot.params['id'];
+   id!:number ;
   incomeForm!: FormGroup;
   listOfCategory: any[] = ["Salary", "Freelancing", "Investments", "stocks", "Bitcoin", "Bank Tramsfer", "Youtube", "Other"];
 
@@ -23,7 +24,7 @@ export class UpdateIncomeComponent {
   ){}
 
   ngOnInit(){
-    
+    this.id=Number(this.activatedRoute.snapshot.params['id']);
     this.incomeForm = this.fb.group({
       title: [null, Validators.required],
       amount: [null, [Validators.required]],

@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { StatsService } from '../../services/stats/stats.service';
-import Chart from 'chart.js/auto';
+import  Chart  from 'chart.js/auto';
 import { CategoryScale } from 'chart.js';
 
 Chart.register(CategoryScale);

@@ -30,6 +30,20 @@ export class DashboardComponent {
     this.getChartData();
   }
 
+  groupByDate(data: any[]): { date: string, amount: number }[] {
+    const grouped = new Map<string, number>();
+  
+    data.forEach(item => {
+      const date = item.date;
+      const amount = item.amount;
+      grouped.set(date, (grouped.get(date) || 0) + amount);
+    });
+  
+    return Array.from(grouped.entries())
+                .map(([date, amount]) => ({ date, amount }))
+                .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  }
+
   createLineChart() {
     const incomeCtx = this.incomeLineChartRef.nativeElement.getContext('2d');
 
@@ -88,9 +102,13 @@ export class DashboardComponent {
   getChartData(){
     this.statsService.getChart().subscribe(res=>{
       if(res.expenseList != null && res.incomeList != null){
-        this.incomes = res.incomeList;
-        this.expenses = res.expenseList;
-        console.log(res);
+        //this.incomes = res.incomeList.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());;
+        //this.expenses = res.expenseList.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());;
+        //console.log(res);
+        this.incomes = this.groupByDate(res.incomeList);  // ✅ Group incomes
+        this.expenses = this.groupByDate(res.expenseList);
+        console.log('Grouped Incomes:', this.incomes);
+       console.log('Grouped Expenses:', this.expenses);
 
         this.createLineChart();
       }

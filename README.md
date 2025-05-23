@@ -102,7 +102,5 @@ ng generate --help
 
 Pull requests are welcome. For major changes, please open an issue first to discuss your ideas.
 
-## License
-
-This project is licensed under the MIT License.
+If you have specific features or usage instructions you'd like to highlight, let me know!
 

@@ -1,59 +1,108 @@
-# ExpenseTrackerWeb
+# Financial Tracker Frontend (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+This project is the frontend of a Financial Tracker application, built using [Angular CLI](https://github.com/angular/angular-cli).
 
-## Development server
+Check this repository for Backend and Database setup with Springboot and MySQL -> https://github.com/Santhoji07/Financial-Tracker-Springboot-MySql.git
 
-To start a local development server, run:
+## Features
+
+- Track and manage your expenses
+- Dashboard with data visualization
+- Responsive design
+- Built with Angular 19+
+- SCSS styling
+- Unit and e2e testing setup
+
+## Getting Started
+
+These instructions will help you set up the project on your local machine for development and testing.
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Angular CLI](https://angular.dev/tools/cli) (`npm install -g @angular/cli`)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Santhoji07/Financial-Tracker-Frontend-Angular.git
+   cd Financial-Tracker-Frontend-Angular
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+### Running the Development Server
+
+Start the local server with:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open your browser and navigate to [http://localhost:4200/](http://localhost:4200/). The application will automatically reload if you change any source files.
 
-## Code scaffolding
+### Building for Production
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+To build the project for production:
 
 ```bash
-ng generate --help
+ng build --configuration production
 ```
 
-## Building
+The build artifacts will be stored in the `dist/` directory.
 
-To build the project run:
+### Running Unit Tests
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+This project uses [Karma](https://karma-runner.github.io) for unit testing.
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+### Running End-to-End Tests
 
-For end-to-end (e2e) testing, run:
+To run end-to-end tests (configure a framework as needed):
 
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Code Scaffolding
 
-## Additional Resources
+Generate a new component:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+ng generate component component-name
+```
+
+For more commands, run:
+
+```bash
+ng generate --help
+```
+
+## Project Structure
+
+- `src/` - Source code for the Angular application
+- `public/` - Static assets
+- `.vscode/` - Recommended VS Code settings and tasks
+- `angular.json` - Angular workspace configuration
+- `.editorconfig` - Editor configuration for consistent coding styles
+
+## Recommended VS Code Extensions
+
+- Angular Language Service (`angular.ng-template`)
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss your ideas.
+
+## License
+
+This project is licensed under the MIT License.
+
